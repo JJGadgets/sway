@@ -156,9 +156,17 @@ static bool set_scroll_button(struct libinput_device *dev, uint32_t button) {
 	return true;
 }
 
-# not done
-#static bool set_scroll_button_lock(struct libinput_device *dev, uint32_t button) {
-	#uint32_t scroll
+static bool set_scroll_button_lock(struct libinput_device *device, 
+		enum libinput_config_scroll_button_lock_state state) {
+	uint32_t scroll = libinput_device_config_scroll_get_methods(device);
+	if ((scroll & ~LIBINPUT_CONFIG_SCROLL_NO_SCROLL) == 0 ||
+			libinput_device_config_scroll_get_button(device) == method) {
+		return false;
+	}
+	sway_log(SWAY_DEBUG, "scroll_set_button_lock(%d)", state);
+	log_status(libinput_device_config_scroll_set_button_lock(device, state));
+	return true;
+}
 
 static bool set_dwt(struct libinput_device *device, bool dwt) {
 	if (!libinput_device_config_dwt_is_available(device) ||
