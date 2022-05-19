@@ -160,7 +160,7 @@ static bool set_scroll_button_lock(struct libinput_device *device,
 		enum libinput_config_scroll_button_lock_state state) {
 	uint32_t scroll = libinput_device_config_scroll_get_methods(device);
 	if ((scroll & ~LIBINPUT_CONFIG_SCROLL_NO_SCROLL) == 0 ||
-			libinput_device_config_scroll_get_button(device) == method) {
+			libinput_device_config_scroll_get_button(device) == state) {
 		return false;
 	}
 	sway_log(SWAY_DEBUG, "scroll_set_button_lock(%d)", state);
@@ -264,7 +264,7 @@ void sway_input_configure_libinput_device(struct sway_input_device *input_device
 	if (ic->scroll_button != INT_MIN) {
 		changed |= set_scroll_button(device, ic->scroll_button);
 	}
-	if (ic->scroll_button_lock != INT_MIN {
+	if (ic->scroll_button_lock != INT_MIN) {
 		changed |= set_scroll_button_lock(device, ic->scroll_button_lock);
 	}
 	if (ic->dwt != INT_MIN) {
