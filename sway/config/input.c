@@ -34,7 +34,7 @@ struct input_config *new_input_config(const char* identifier) {
 	input->scroll_factor = FLT_MIN;
 	input->scroll_button = INT_MIN;
 	input->scroll_method = INT_MIN;
-	input->scroll_button_lock = INT_MIN
+	input->scroll_button_lock = INT_MIN;
 	input->left_handed = INT_MIN;
 	input->repeat_delay = INT_MIN;
 	input->repeat_rate = INT_MIN;
