@@ -2,7 +2,7 @@
 #include "sway/commands.h"
 #include "sway/input/cursor.h"
 
-struct cmd_results *input_cmd_scroll_button(int argc, char **argv) {
+struct cmd_results *input_cmd_scroll_button_lock(int argc, char **argv) {
 	struct cmd_results *error = NULL;
 	if ((error = checkarg(argc, "scroll_button_lock", EXPECTED_AT_LEAST, 1))) {
 		return error;
